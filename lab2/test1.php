@@ -26,7 +26,38 @@ $students = [
         "gender" => "Nữ",
         "class" => "CNTT3"
     ],
-]; ?>
+];
+$khoa = [
+    "Công nghệ thông tin",
+    "Quản trị kinh doanh",
+    "Kế toán",
+    "Ngôn ngữ Anh",
+    "Thiết kế đồ họa"
+];
+
+$lop = [
+    "CNTT01",
+    "CNTT02",
+    "CNTT03",
+    "QTKD01",
+    "KT01"
+];
+
+$gioitinh = [
+    "Nam",
+    "Nữ",
+    "Khác"
+];
+
+$sothich = [
+    "Đọc sách",
+    "Nghe nhạc",
+    "Du lịch",
+    "Chơi thể thao",
+    "Xem phim",
+    "Lập trình"
+];
+?>
 
 
 <!DOCTYPE html>
@@ -150,45 +181,150 @@ $students = [
     </table>
 </section>
 <style>
-    body {
-        padding: 20px;
-    }
+.s2 {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
 
-    .s2 {
-        max-width: 70%;
-        margin: 10px auto;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    }
-    s2.table{
-        width: 100%;
-        border-collapse: collapse;
-        text-align: center;
-        border: 1px solid #ffffff;
-    }
-    .s2 h3 {
-        color: #000000;
-        margin-bottom: 20px;
-    }
+.s2 h3 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
 
-    .s2 tr {
-        list-style: none;
-        border: 1px solid #ffffff;
-    }
+.s2 table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
 
-    .s2 th {
-        padding: 10px;
-        margin-bottom: 10px;
-        background: #005ad8;
-        color: white;
-        border: 1px solid #ffffff;
-    }
-    .s2 td{
-        padding: 11px 10px;
-        border: 1px solid #ffffff;
-    }
+.s2 th {
+    background-color: #0860df;
+    color: white;
+    padding: 12px 10px;
+    text-align: center;
+    border: 3px solid white;
+    white-space: nowrap;
+}
+
+.s2 td {
+    padding: 12px 10px;
+    text-align: left;
+    border: 3px solid white;
+    white-space: nowrap;
+}
+
+.s2 tr:hover td {
+    background-color: #f2f6ff;
+}
 </style>
+<section class="s3">
+
+    <h2>ĐĂNG KÝ THÔNG TIN SINH VIÊN</h2>
+
+    <form action="" method="POST">
+
+        <!-- Họ và tên -->
+        <div class="form-group">
+            <label>Họ và tên:</label>
+            <input type="text"
+                   name="hoten"
+                   placeholder="Nhập họ và tên"
+                   required>
+        </div>
+
+        <!-- Chọn khoa -->
+        <div class="form-group">
+            <label>Khoa:</label>
+            <select name="khoa" required>
+                <option value="">-- Chọn khoa --</option>
+
+                <?php
+                foreach ($khoa as $item) {
+                    echo "<option value='$item'>$item</option>";
+                }
+                ?>
+
+            </select>
+        </div>
+
+        <!-- Chọn lớp -->
+        <div class="form-group">
+            <label>Lớp:</label>
+            <select name="lop" required>
+                <option value="">-- Chọn lớp --</option>
+
+                <?php
+                foreach ($lop as $item) {
+                    echo "<option value='$item'>$item</option>";
+                }
+                ?>
+
+            </select>
+        </div>
+
+        <!-- Giới tính -->
+        <div class="form-group">
+            <label>Giới tính:</label>
+
+            <div class="radio-group">
+                <?php
+                foreach ($gioitinh as $item) {
+                    echo "
+                    <label>
+                        <input type='radio'
+                               name='gioitinh'
+                               value='$item'
+                               required>
+                        $item
+                    </label>
+                    ";
+                }
+                ?>
+            </div>
+        </div>
+
+        <!-- Sở thích -->
+        <div class="form-group">
+            <label>Sở thích:</label>
+
+            <div class="checkbox-group">
+                <?php
+                foreach ($sothich as $item) {
+                    echo "
+                    <label>
+                        <input type='checkbox'
+                               name='sothich[]'
+                               value='$item'>
+                        $item
+                    </label>
+                    ";
+                }
+                ?>
+            </div>
+        </div>
+
+        <!-- Nút chức năng -->
+        <div class="buttons">
+            <button type="submit" class="btn-submit">
+                Đăng ký
+            </button>
+
+            <button type="reset" class="btn-reset">
+                Làm mới
+            </button>
+        </div>
+
+    </form>
+
 </body>
 
 </html>
